@@ -1,1 +1,8 @@
 #!/bin/bash
+
+read -p "Kasutaja: " user
+read -sp "Parool: " password
+
+sudo useradd $user
+
+sudo mkdir /home/$user/kaust
