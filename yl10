@@ -1,8 +1,17 @@
 #!/bin/bash
 
 read -p "Kasutaja: " user
+
 read -sp "Parool: " password
+echo
+read -p "Grupp: " group
 
-sudo useradd $user
+echo
+sudo useradd -m $user
+sudo groupadd -f $group
+sudo sudo usermod -aG $group $user
 
-sudo mkdir /home/$user/kaust
+echo "$user:$password" | sudo chpasswd
+sudo mkdir /home/$user/kataloog
+sudo touch /home/$user/kataloog/teretulemast_$user.txt
+sudo chown $user:$group /home/$user/kataloog
