@@ -1,1 +1,9 @@
 #!/bin/bash
+
+ read -p "Mis teenust soovid kontrollida?: " status
+
+if [ "$(systemctl is-enabled $status)" = "enabled" ]; then
+    echo "Teenus on aktiivne"
+else
+    echo "Teenus pole aktiivne"
+fi
