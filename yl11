@@ -7,3 +7,4 @@ if [ "$(systemctl is-enabled $status)" = "enabled" ]; then
 else
     echo "Teenus pole aktiivne"
 fi
+

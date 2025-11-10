@@ -1,0 +1,15 @@
+#!/bin/bash
+read -p "sisesta fail mida soovid kontrollida: " fail
+read -p "sisesta soovitud õigused: " oigused
+#Kontrollib kas fail on kaust või fail   
+if [ ! -f $fail ]; then
+  echo "See pole fail vaid kaust!"
+#Kui fail on leitud siis ütleb kas oigused vastavad või mitte 
+elif [ "$(stat -c %a "$fail")" = "$oigused" ]; then
+  echo "Fail leitud!"
+  echo "Failil on õigused korrekselt määratud"
+else
+  echo "Fail leitud!"
+  echo "Failil õigused võiksid olla $oigused, aga on "
+  stat -c %a "$fail"
+fi
